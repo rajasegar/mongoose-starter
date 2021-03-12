@@ -9,7 +9,7 @@ html(lang="en")
     ul#catlist
       each cat in cats
         include includes/cat.pug
-    form(hx-post="/cats", hx-target="#catlist", hx-swap="beforeend")
+    form(hx-post="/cats", hx-target="#catlist", hx-swap="beforeend", _="on htmx:afterOnLoad set #txtName.value to ''")
       p
-        input(type="text", name="name")
+        input#txtName(type="text", name="name")
         button(type="submit") Add Cat
