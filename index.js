@@ -33,10 +33,10 @@ app.post('/cats', async (req, res) => {
   const { name } = req.body;
 
   const kitty = new Cat({name});
-  await kitty.save();
+  const cat = await kitty.save();
   const cats = await Cat.find();
   const template = pug.compileFile('views/includes/cat.pug');
-  const markup = template({ name });
+  const markup = template({ cat });
   res.send(markup);
 });
 

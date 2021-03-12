@@ -3,14 +3,12 @@ html(lang="en")
   head
     title Meow meow
     script(src="https://unpkg.com/htmx.org@1.3.1")
+    script(src="https://unpkg.com/hyperscript.org@0.0.5")
   body
     h1 Meow world
     ul#catlist
       each cat in cats
-        li
-          | #{cat.name}
-          | #{' '}
-          button(hx-delete='/cats/' + cat._id, type="button", hx-swap="none") &times;
+        include includes/cat.pug
     form(hx-post="/cats", hx-target="#catlist", hx-swap="beforeend")
       p
         input(type="text", name="name")

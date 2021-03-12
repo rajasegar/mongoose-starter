@@ -1,1 +1,4 @@
-li= name
+li(id='cat-' + cat._id)
+  | #{cat.name}
+  | #{' '}
+  button(hx-delete='/cats/' + cat._id, type="button", hx-swap="none", _="on htmx:afterOnLoad remove #cat-"  + cat._id ) &times;
